@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-        
-    
+
+
           
       - name: Clone work1
         run: |
@@ -35,9 +35,8 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git config --global credential.helper store
-          echo "https://github.com/${{ secrets.WORKFL2_TOK}}" > ~/.git-credentials
+       
           git add .
           git commit -m "Unzipped files from work1"
-          git push origin main
+          git push https://x-access-token:${{ secrets.WORKFL2_TOK }}@github.com/ptmnational/work2.git HEAD:refs/heads/main
         
