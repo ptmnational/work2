@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: D ZIP from work1
+      - name: Download ZIP from work1
         uses: actions/download-artifact@v2
         with:
           name: nomfichier
@@ -23,6 +23,9 @@ jobs:
           
       - name: Unzip files
         run: unzip my_files.zip
+
+      - name: Remove ZIP file
+        run: rm my_files.zip
         
       - name: Commit changes
         run: |
@@ -32,5 +35,3 @@ jobs:
           git commit -m "Unzipped files from work1"
           git push origin main
         
-      - name: Remove ZIP file
-        run: rm my_files.zip
