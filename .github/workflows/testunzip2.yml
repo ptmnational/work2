@@ -13,11 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: D ZIP from work1
-        uses: actions/download-artifact@v2
+      - name: Download ZIP from work1
+        uses: actions/download-artifact@v4
         with:
           name: nomfichier
-          path: ./my_files.zip
+          path: ./
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFL_TOK }}
           
