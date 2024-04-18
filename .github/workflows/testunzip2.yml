@@ -29,6 +29,9 @@ jobs:
           
       - name: Unzip files
         run: unzip my_files.zip
+
+      - name: Remove ZIP file
+        run: rm my_files.zip
         
       - name: Commit changes
         run: |
@@ -36,5 +39,3 @@ jobs:
           git commit -m "Unzipped files from repos1"
           git push origin main
         
-      - name: Remove ZIP file
-        run: rm my_files.zip
