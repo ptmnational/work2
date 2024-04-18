@@ -1,0 +1,36 @@
+name: Workflow2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unzip-commit-and-remove:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: D ZIP from work1
+        uses: actions/download-artifact@v2
+        with:
+          name: nomfichier
+          path: ./my_files.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFL_TOK }}
+          
+      - name: Unzip files
+        run: unzip my_files.zip
+        
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Unzipped files from work1"
+          git push origin main
+        
+      - name: Remove ZIP file
+        run: rm my_files.zip
