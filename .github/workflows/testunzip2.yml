@@ -17,7 +17,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: nomfichier
-          path: ./my_files.zip
+          path: my_files.zip
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFL_TOK }}
           
