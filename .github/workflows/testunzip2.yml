@@ -38,5 +38,5 @@ jobs:
        
           git add .
           git commit -m "Unzipped files from work1"
-          git push https://x-access-token:${{ secrets.WORKFL2_TOK }}@github.com/ptmnational/work2.git HEAD:refs/heads/main
+          git push https://x-access-token:${{ secrets.WK2_TOKEN }}@github.com/ptmnational/work2.git HEAD:refs/heads/main
         
