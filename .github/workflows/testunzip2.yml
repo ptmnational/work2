@@ -18,12 +18,12 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           
-      - name: Clone repos1
+      - name: Clone work1
         run: |
-          git clone https://github.com/<owner>/<repo1-name> ./repo1
+          git clone https://github.com/ptmnational/work1 ./repo1
           cd ./repo1
           
-      - name: Download ZIP from repos1
+      - name: Download ZIP from work1
         run: |
           curl -o my_files.zip https://raw.githubusercontent.com/ptmnational/work1/main/my_files.zip
           
@@ -36,6 +36,6 @@ jobs:
       - name: Commit changes
         run: |
           git add .
-          git commit -m "Unzipped files from repos1"
+          git commit -m "Unzipped files from work1"
           git push origin main
         
