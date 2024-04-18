@@ -28,7 +28,7 @@ jobs:
           curl -o my_files.zip https://raw.githubusercontent.com/ptmnational/work1/main/my_files.zip
           
       - name: Unzip files
-        run: unzip my_files.zip
+        run: unzip -o my_files.zip
 
       - name: Remove ZIP file
         run: rm my_files.zip
