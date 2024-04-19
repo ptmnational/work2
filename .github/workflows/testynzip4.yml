@@ -1,0 +1,44 @@
+name: Workflow2.2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download-unzip-commit-and-remove:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+
+          
+      - name: Clone work1
+        run: |
+          git clone https://github.com/ptmnational/work1 ./repo1
+          cd ./repo1
+          
+      - name: Download ZIP from work1
+        run: |
+          curl -o my_files.zip https://raw.githubusercontent.com/ptmnational/work1/main/my_files.zip
+
+      - name: Configure Git
+        run: |
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
+  
+        
+      - name: Commit and push changes
+        run: |
+            git add .
+            git commit -m "Add extracted files"
+            git push https://ptmnational:$TOKEN@github.com/ptmnational/work2.git HEAD:main
+        env:
+            TOKEN: ${{ secrets.ACC_TOKEN }}  
+          
+          
+       
+        
