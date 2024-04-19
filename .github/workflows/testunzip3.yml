@@ -1,34 +1,23 @@
-name: Workflow2
+name: Workflow2.1
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [transfer-zip]
 
 jobs:
-  clone-and-process:
+  download-zip-and-process:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Clone temporary repository
-        run: git clone https://github.com/ptmnational/temp_repo.git temp_repo
+      - name: Checkout repository
+        uses: actions/checkout@v2
         
-      - name: Checkout branch
+      - name: Download ZIP branch from repository1
         run: |
-          cd temp_repo
+          git fetch origin temp_branch
           git checkout temp_branch
 
-      - name: Unzip files
-        run: unzip -o my_files.zip
 
-      - name: Commit changes
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-       
-          git add .
-          git commit -m "Unzipped files from work1"
-          git push https://x-access-token:${{ secrets.WK2_TOKEN }}@github.com/ptmnational/work2.git HEAD:refs/heads/main
+    
           
-      # Ajoutez ici les étapes pour extraire le contenu du fichier ZIP,
-      # faire un commit et supprimer le fichier ZIP.
+     
